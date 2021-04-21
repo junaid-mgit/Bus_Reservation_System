@@ -25,4 +25,5 @@ public class DBConnect {
 	public Statement getStatement() {
 		return stat;
 	}
+	
 }
