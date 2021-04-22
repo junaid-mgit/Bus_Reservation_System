@@ -1,4 +1,4 @@
-package com.brs.dbConnect;
+package com.brs.Register;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
