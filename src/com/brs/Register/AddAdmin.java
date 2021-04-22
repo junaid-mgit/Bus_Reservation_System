@@ -1,4 +1,4 @@
-package com.brs.login;
+package com.brs.Register;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,12 +6,18 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
+import com.brs.dbConnect.DBConnect;
 import com.brs.shared.auth_user;
 
-public class Login implements ActionListener{
-
+public class AddAdmin implements ActionListener {
+	
 	JFrame f1;
 	JLabel l1,l2;
 	JTextField user_name;
@@ -24,10 +30,11 @@ public class Login implements ActionListener{
 	
 	ArrayList<auth_user> users;
 	auth_user user;
-	
-	public Login() {
-		
+
+	public AddAdmin()
+	{
 		db = new DBConnect();
+		s = db.getStatement();
 		
 		f1=new JFrame("BRS Login");
 		p1=new JPanel();
@@ -55,34 +62,15 @@ public class Login implements ActionListener{
 		f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent ae) {
-		String username = user_name.getText();
-		String psd = new String(password.getPassword());
-		
-		auth_user user = new auth_user(username,psd,true);
-		
-		try {
-			boolean isLogin = db.LoginUser(user);
-			
-			if(isLogin) 
-			{
-				JOptionPane.showMessageDialog(f1, 
-						"Congratulations! You Loggedin Successfully");		
-			}
-			else {
-				JOptionPane.showMessageDialog(f1, 
-						"User Not Found!");	
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
 	public static void main(String[] args) {
-		new Login();
+		// TODO Auto-generated method stub
+
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
-
-
