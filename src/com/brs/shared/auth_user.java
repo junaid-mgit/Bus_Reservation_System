@@ -1,6 +1,6 @@
 package com.brs.shared;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class auth_user {
 	private int id;
@@ -15,6 +15,19 @@ public class auth_user {
 	private boolean is_active;
 	private Date date_joined;
 	
+	
+	
+	public auth_user(String password, String username, String first_name, String last_name, String email,
+			Date date_joined) {
+		super();
+		this.password = password;
+		this.username = username;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email = email;
+		this.date_joined = date_joined;
+	}
+
 	public auth_user(String username,String password,boolean is_active) {
 		super();
 		this.password = password;

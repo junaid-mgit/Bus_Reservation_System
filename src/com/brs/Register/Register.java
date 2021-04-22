@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 package com.brs.Register;
-import com.brs.classes.User;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import com.brs.login.Login;
+import com.brs.shared.auth_user;
+import java.util.Date;
 
 /**
  *
@@ -74,6 +73,12 @@ static int id=5;
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Register");
+        
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	registerBtnActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("User Name");
@@ -174,20 +179,28 @@ static int id=5;
         char[] conPassword= jPasswordField2.getPassword();
         String pass1=new String(password);
         String pass2=new String(conPassword);
+        
      try {
-            Class.forName("com.mysql.jdbc.Driver");
-            String databaseURL = "jdbc:mysql://dev.thekrishna.in:3306/Bus_Reservation_System";
-            Connection con = DriverManager.getConnection(databaseURL, "root", "0000");
-            Statement stat = con.createStatement();   
-           
-          String insertQuery = "insert into auth_user values('"+(++id)+"','" + firstname + "','" + lastname + "','" + username + "','" + pass1 + "','" + email + "','" ;
-           
-          stat.executeUpdate(insertQuery);
-          dispose(); 
-          User ln=new User(firstname,lastname,username,pass1);
-               
-           
-           }
+    	 DBConnect db = new DBConnect();
+    	 
+    	 if(!pass1.equals(pass2))
+    	 {
+    		 System.out.println("Password Doesn't Match");
+    		 return;
+    	 }           
+
+          auth_user user = new auth_user(pass1, username, firstname, lastname, email, new Date());
+          
+          System.out.println(user);  
+          boolean isSuccess = db.RegisterUser(user);
+          
+          if(isSuccess)
+          {
+        	System.out.println(isSuccess);  
+        	new Login();
+          }
+          
+         }
           
 
          catch (Exception e) {
