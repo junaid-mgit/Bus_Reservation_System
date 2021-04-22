@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 public class MainPage {
 
 	public static void main(String[] args) {
-		DBConnect databaseConnection = new DBConnect();
+		/*DBConnect databaseConnection = new DBConnect();
 		JFrame mainFrame = new JFrame("Welcome To Red Bus");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setSize(500,800);
@@ -104,7 +104,8 @@ public class MainPage {
 		mainFrame.getContentPane().add(BorderLayout.WEST,datePanel);
 		mainFrame.getContentPane().add(BorderLayout.CENTER,availableBusesPanel);
 		mainFrame.pack();
-		mainFrame.setVisible(true);
+		mainFrame.setVisible(true);*/
+		new SearchBuses();
 	}
 
 }
