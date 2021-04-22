@@ -14,10 +14,16 @@ import java.util.Date;
  */
 public class Register extends javax.swing.JFrame {
 static int id=5;
+private boolean isAdmin;
     /**
      * Creates new form Register
      */
     public Register() {
+        initComponents();
+    }
+    
+    public Register(boolean isAdmin) {
+    	this.isAdmin = isAdmin;
         initComponents();
     }
 
@@ -56,9 +62,13 @@ static int id=5;
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Email");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel4.setText("Register");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        if(isAdmin)
+        	jLabel4.setText("Add Admin");
+        else
+        	jLabel4.setText("Register");
+        
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -190,16 +200,17 @@ static int id=5;
     	 }           
 
           auth_user user = new auth_user(pass1, username, firstname, lastname, email, new Date());
-          
-          System.out.println(user);  
-          boolean isSuccess = db.RegisterUser(user);
-          
-          if(isSuccess)
-          {
-        	System.out.println(isSuccess);  
-        	new Login();
-          }
-          
+            
+          boolean isSuccess;
+          if(!isAdmin)
+        	 isSuccess = db.RegisterUser(user);
+          else
+        	  isSuccess = db.RegisterAdmin(user);
+        
+          System.out.println(isSuccess);
+           if(isSuccess) {
+        	   new Login();
+           }
          }
           
 
@@ -242,7 +253,7 @@ static int id=5;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Register().setVisible(true);
+                new Register(true).setVisible(true);
             }
         });
     }

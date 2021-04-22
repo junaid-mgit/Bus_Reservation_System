@@ -51,6 +51,7 @@ public class DBConnect {
 						res.getBoolean("is_active"), res.getDate("date_joined"));
 				users.add(user);
 			}
+			System.out.println(users);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -70,4 +71,17 @@ public class DBConnect {
 		}
 		return false;
 	}
+	
+	public boolean IsAdmin()
+	{
+		for( auth_user au : users)
+		{
+			if(au.isIs_superuser()) 
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }

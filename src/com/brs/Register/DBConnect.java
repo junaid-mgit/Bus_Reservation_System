@@ -41,4 +41,18 @@ public class DBConnect {
 		
 		return false;
 	}
+	
+	public boolean RegisterAdmin(auth_user user)
+	{
+		String query = "insert into auth_user values(0,'" + user.getPassword()+ "',current_date(),true,'" + user.getUsername()+"','" + user.getFirst_name()+"','" + user.getLast_name()+"','" + user.getEmail()+"',true,true,current_date())";
+		
+		try {
+			res=stat.executeUpdate(query);
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 }

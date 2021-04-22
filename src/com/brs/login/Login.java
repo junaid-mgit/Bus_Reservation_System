@@ -67,8 +67,12 @@ public class Login implements ActionListener{
 			
 			if(isLogin) 
 			{
-				JOptionPane.showMessageDialog(f1, 
-						"Congratulations! You Loggedin Successfully");		
+				if(db.IsAdmin())
+					JOptionPane.showMessageDialog(f1, 
+							"Congratulations! Admin Loggedin Successfully");
+				else
+					JOptionPane.showMessageDialog(f1, 
+							"Congratulations! User Loggedin Successfully");
 			}
 			else {
 				JOptionPane.showMessageDialog(f1, 
