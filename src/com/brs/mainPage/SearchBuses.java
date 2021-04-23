@@ -112,17 +112,13 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 			fromStopList.removeAllItems();
 			fromStopList.addItem(name.substring(0, 2) + ":Stop "+i++);
 			fromStopList.addItem(name.substring(0, 2) + ":Stop "+i++);
-//			stops.add(name.substring(0, 2) + ":Stop "+i++);
-//			stops.add(name.substring(0, 2) + ":Stop "+i++);
-//			fromAreaPairs.put(name, stops);
+
 		} else if(e.getSource()==toAreaList) {
 			String name = (String)toAreaList.getSelectedItem();
 			toStopList.removeAllItems();
 			toStopList.addItem(name.substring(0, 2) + ":Stop "+i++);
 			toStopList.addItem(name.substring(0, 2) + ":Stop "+i++);
-//			stops.add(name.substring(0, 2) + ":Stop "+i++);
-//			stops.add(name.substring(0, 2) + ":Stop "+i++);
-//			toAreaPairs.put(name, stops);
+
 		} 
 		
 		
