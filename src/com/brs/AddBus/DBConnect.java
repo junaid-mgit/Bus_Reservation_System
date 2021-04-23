@@ -35,12 +35,12 @@ public class DBConnect {
 	}
 	
 	public boolean add(busrv_businfo bus) {
-	String query = "insert into busrv_businfo values(0,'"bus.getId()+"','" 
+	String query = "insert into busrv_businfo values(0,'" 
                 + bus.getBus_name()+"','"+ bus.getSlug()+"','" + bus.getType()+"','" 
                 +bus.getArriving_time()+"','" + bus.getDepature_time()+"','"+bus.getFare()+"','"+bus.getNo_of_seats()+"','"
-                +',false,current_date(),current_date())";
+                + "',true,current_date(),current_date()," + bus.getArriving_from_id() +"," + bus.getDepature_at_id()+ ")";
 
-
+	    System.out.println(query);
 		buses = new ArrayList<busrv_businfo>();
                 int num=0;
 		try {

@@ -1,5 +1,6 @@
 package com.brs.mainPage;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -33,7 +34,7 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 	DBConnect db = new DBConnect();
 	// declaring swing components
 	JDatePicker datePicker;
-	JPanel searchPanel;
+	JPanel searchPanel,tablePanel;
 	JLabel fromArea,toArea,fromStop,toStop,travelDate;
 	JComboBox fromAreaList,toAreaList,fromStopList,toStopList;
 	JButton searchButton;
@@ -50,6 +51,7 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 		fromAreaPairs = new HashMap<String,List<String>>();
 		areasList = populateAreas();
 		searchPanel = new JPanel();
+		tablePanel = new JPanel();
 		fromArea = new JLabel("Source");
 		toArea = new JLabel("Destination");
 		fromStop = new JLabel("Source Stops");
@@ -88,10 +90,11 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 		searchPanel.add(travelDate);
 		searchPanel.add(datePicker);
 		searchPanel.add(searchButton);
-		searchPanel.add(new JScrollPane(availableBuses));
-		add(searchPanel);
-		
-		setSize(300,300);
+		        
+		tablePanel.add(new JScrollPane(availableBuses));
+		add(searchPanel,BorderLayout.NORTH);
+		add(tablePanel,BorderLayout.CENTER);
+		setSize(400,300);
 		setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 	}
 	// method to areas list

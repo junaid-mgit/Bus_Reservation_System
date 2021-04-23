@@ -12,7 +12,12 @@ import com.brs.AdminMainPage.AdminMainPage;
 import com.brs.mainPage.HomePage;
 import com.brs.shared.auth_user;
 
-public class Login implements ActionListener {
+
+/*
+ * The Login class is used to add and validate login credentials
+ */
+public class Login implements ActionListener{
+
 
 	public JFrame f1;
 	JLabel l1, l2;
@@ -27,6 +32,11 @@ public class Login implements ActionListener {
 	ArrayList<auth_user> users;
 	auth_user user;
 
+	
+/*
+ * The Login method is used to add login details
+ */
+	
 	public Login() {
 
 		db = new DBConnect();
@@ -54,6 +64,11 @@ public class Login implements ActionListener {
 		f1.setSize(400, 400);
 		f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+
+	
+/*
+ * The actionPerformed method is used to validate login details
+ */
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {

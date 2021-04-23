@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import javax.swing.*;
 import com.brs.shared.auth_user;
 
+/*
+ * The DBConnect class is used to connect to database and execute the query to login into console
+ */
+
 public class DBConnect {
 	Connection con;
 	ResultSet res;
@@ -23,6 +27,13 @@ public class DBConnect {
 	public static void main(String[] args) {
 		new Login();
 	}
+	
+/*
+ * The DBConnect method is used to connect to database
+ * @param con
+ * @param stat
+ */
+	
 	public DBConnect() {
 		
 		try 
@@ -33,6 +44,11 @@ public class DBConnect {
 			e.printStackTrace();
 		}
 	}
+	
+/*
+ * The LoginUser method is used to execute login query and get user details
+ * @param user
+ */
 	
 	public boolean LoginUser(auth_user user) {
 		String query = "SELECT id,password,last_login,is_superuser,username,first_name,last_name,email,is_staff,is_active,date_joined"
@@ -60,6 +76,12 @@ public class DBConnect {
 		return CheckUser(user.getUsername(),user.getPassword());
 	}
 	
+/*
+ * The CheckUser method is used to validate user account details
+ * @param username
+ * @param password
+ */
+	
 	public boolean CheckUser(String username, String password)
 	{
 		for( auth_user au : users)
@@ -71,6 +93,10 @@ public class DBConnect {
 		}
 		return false;
 	}
+	
+/*
+ * The IsAdmin method is used to validate whether the user is admin/normal user
+ */
 	
 	public boolean IsAdmin()
 	{
