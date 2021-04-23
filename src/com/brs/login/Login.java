@@ -8,12 +8,14 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import com.brs.AdminMainPage.AdminMainPage;
+import com.brs.mainPage.HomePage;
 import com.brs.shared.auth_user;
 
-public class Login implements ActionListener{
+public class Login implements ActionListener {
 
-	JFrame f1;
-	JLabel l1,l2;
+	public JFrame f1;
+	JLabel l1, l2;
 	JTextField user_name;
 	JPasswordField password;
 	JButton b1;
@@ -21,68 +23,65 @@ public class Login implements ActionListener{
 	DBConnect db;
 	Statement s;
 	ResultSet res;
-	
+
 	ArrayList<auth_user> users;
 	auth_user user;
-	
-	public Login() {
-		
-		db = new DBConnect();
-		
-		f1=new JFrame("BRS Login");
-		p1=new JPanel();
-		
-		l1=new JLabel("UserName");
-		user_name= new JTextField(30);
-		
-		l2=new JLabel("Password");
-		password= new JPasswordField(30);
-		
 
-		b1=new JButton("Login");
-		b1.addActionListener(this);  // an object of class where actionPerformed is defined 
-		
+	public Login() {
+
+		db = new DBConnect();
+
+		f1 = new JFrame("BRS Login");
+		p1 = new JPanel();
+
+		l1 = new JLabel("UserName");
+		user_name = new JTextField(30);
+
+		l2 = new JLabel("Password");
+		password = new JPasswordField(30);
+
+		b1 = new JButton("Login");
+		b1.addActionListener(this); // an object of class where actionPerformed is defined
+
 		p1.add(l1);
 		p1.add(user_name);
 		p1.add(l2);
 		p1.add(password);
 
 		p1.add(b1);
-		
+
 		f1.add(p1);
-		f1.setSize(400,400);
-		f1.setVisible(true);
+		f1.setSize(400, 400);
 		f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		String username = user_name.getText();
 		String psd = new String(password.getPassword());
-		
-		auth_user user = new auth_user(username,psd,true);
-		
+
+		auth_user user = new auth_user(username, psd, true);
+
 		try {
 			boolean isLogin = db.LoginUser(user);
-			
-			if(isLogin) 
-			{
-				JOptionPane.showMessageDialog(f1, 
-						"Congratulations! You Loggedin Successfully");		
-			}
-			else {
-				JOptionPane.showMessageDialog(f1, 
-						"User Not Found!");	
+
+			if (isLogin) {
+				if (db.IsAdmin()) {
+					f1.dispose();
+					new AdminMainPage();
+				} else {
+					f1.dispose();
+					new HomePage();
+				}
+			} else {
+				JOptionPane.showMessageDialog(f1, "User Not Found!");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	public static void main(String[] args) {
-		new Login();
+		new Login().f1.setVisible(true);
 	}
 }
-
-
