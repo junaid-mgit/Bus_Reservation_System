@@ -16,7 +16,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import org.jdatepicker.JDatePicker;
 import org.jdatepicker.impl.DateComponentFormatter;
@@ -33,7 +37,7 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 	JLabel fromArea,toArea,fromStop,toStop,travelDate;
 	JComboBox fromAreaList,toAreaList,fromStopList,toStopList;
 	JButton searchButton;
-	JTable availableBuses;
+	JTable availableBuses = new JTable();
 	
 	String areasList[] ;
 	Object busesData[][];
@@ -127,20 +131,25 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 		
 	}
 	
+	// button click action listener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	if (e.getSource()==searchButton) {
-			System.out.println("Hello");
+			
+			// initialize table column names
 			String busTableColumns[] = new String[] { "id", "bus_name", "type", "arriving_time", "departure_time",
 					"fare", "no_of_seats" };
 			String fromAreaName = (String) fromAreaList.getSelectedItem();
 			String toAreaName = (String) toAreaList.getSelectedItem();
-			System.out.println(fromAreaName + toAreaName);
+			
+			// get search result of available buses in the result set
 			ResultSet searchResults = db.searchBusesResultSet(fromAreaName, toAreaName);
 			try {
 				if (searchResults.next() == false) {
+					// show dialog window if no bus is available
 					JOptionPane.showMessageDialog(this, "No Buses Available");
 				} else {
+					// get data of available buses 
 					int i = 0;
 					busesData = new Object[db.getResultSetSize()][7];
 					while (searchResults.next()) {
@@ -159,8 +168,8 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 
 				e1.printStackTrace();
 			}
-			System.out.println(busesData.length);
-			availableBuses = new JTable(busesData, busTableColumns);
+			// set a new data model for available buses table
+			availableBuses.setModel(new DefaultTableModel(busesData, busTableColumns));
 		}
 		
 	}
