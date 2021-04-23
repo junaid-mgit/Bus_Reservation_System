@@ -12,16 +12,18 @@ import java.util.Date;
  *
  * @author nishtha
  */
+// provides ui for user registration
 public class Register extends javax.swing.JFrame {
 static int id=5;
 private boolean isAdmin;
     /**
      * Creates new form Register
      */
+// default constructor
     public Register() {
         initComponents();
     }
-    
+   // parameterised constructor 
     public Register(boolean isAdmin) {
     	this.isAdmin = isAdmin;
         initComponents();
@@ -180,7 +182,8 @@ private boolean isAdmin;
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
- private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+ // Method get invoked when the register button is clicked
+    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {                                            
         String firstname = jTextField1.getText();
         String lastname = jTextField2.getText();
         String email = jTextField3.getText();
