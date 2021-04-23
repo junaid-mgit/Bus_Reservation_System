@@ -88,6 +88,7 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 		searchPanel.add(travelDate);
 		searchPanel.add(datePicker);
 		searchPanel.add(searchButton);
+		searchPanel.add(new JScrollPane(availableBuses));
 		add(searchPanel);
 		
 		setSize(300,300);
