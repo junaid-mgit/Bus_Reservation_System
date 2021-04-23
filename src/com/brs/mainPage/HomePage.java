@@ -1,9 +1,9 @@
 package com.brs.mainPage;
 
 import javax.swing.*;
+import java.awt.*;
 
 import com.brs.Register.Register;
-import com.brs.login.Login;
 
 public class HomePage {
 
@@ -28,8 +28,10 @@ public class HomePage {
 		panel1.add(new SearchBuses().getContentPane());
 		panel2.add(r.getContentPane());
 		
+		Image icon = Toolkit.getDefaultToolkit().getImage("src/Images/redbus.png");  
+		f.setIconImage(icon);  
 
-		tabbedPane.addTab("Main Page", panel1);
+		tabbedPane.addTab("Main Page", UIManager.getIcon("OptionPane.informationIcon"),panel1);
 		tabbedPane.addTab("Regsiter ", panel2);
 		tabbedPane.addTab("Buses", panel3);
 
