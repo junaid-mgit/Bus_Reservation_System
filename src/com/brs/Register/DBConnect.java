@@ -31,7 +31,9 @@ public class DBConnect {
 	//inserts the value into database
 	public boolean RegisterUser(auth_user user)
 	{
-		String query = "insert into auth_user values(0,'" + user.getPassword()+ "',current_date(),false,'" + user.getUsername()+"','" + user.getFirst_name()+"','" + user.getLast_name()+"','" + user.getEmail()+"',false,true,current_date())";
+		String query = "insert into auth_user values(0,'" + user.getPassword()+ "',current_date(),false,'" + 
+                        user.getUsername()+"','" + user.getFirst_name()+"','" + user.getLast_name()+"','" 
+                        + user.getEmail()+"',false,true,current_date())";
 		try {
 			res=stat.executeUpdate(query);
 			return true;
@@ -44,7 +46,10 @@ public class DBConnect {
 	// registers the admin
 	public boolean RegisterAdmin(auth_user user)
 	{
-		String query = "insert into auth_user values(0,'" + user.getPassword()+ "',current_date(),true,'" + user.getUsername()+"','" + user.getFirst_name()+"','" + user.getLast_name()+"','" + user.getEmail()+"',true,true,current_date())";
+		String query = "insert into auth_user values(0,'" + user.getPassword()+
+                        
+                        "',current_date(),true,'" + user.getUsername()+"','" + user.getFirst_name()
+                        +"','" + user.getLast_name()+"','" + user.getEmail()+"',true,true,current_date())";
 		
 		try {
 			res=stat.executeUpdate(query);
