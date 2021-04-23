@@ -24,8 +24,10 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
+// SearchBuses class to search buses based on user inputs
 public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 	DBConnect db = new DBConnect();
+	// declaring swing components
 	JDatePicker datePicker;
 	JPanel searchPanel;
 	JLabel fromArea,toArea,fromStop,toStop,travelDate;
@@ -36,8 +38,9 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 	Map<String,List<String>> fromAreaPairs,toAreaPairs;
 	List<String> stops;
 	
+	// class constructor
 	public SearchBuses() {
-		
+		// defining components
 		fromAreaPairs = new HashMap<String,List<String>>();
 		areasList = populateAreas();
 		searchPanel = new JPanel();
@@ -66,6 +69,7 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 		toStopList = new JComboBox();
 		toStopList.addItemListener(this);
 		
+		// adding components in the panel
 		searchButton = new JButton("Search");
 		searchPanel.add(fromArea);
 		searchPanel.add(fromAreaList);
@@ -83,6 +87,7 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 		setSize(300,300);
 		setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 	}
+	// method to areas list
 	private String[] populateAreas() {
 		ResultSet areasResultSet= db.getTravelAreas();
 		String[] areasList2 = new String[100];
@@ -93,11 +98,12 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 				i++;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return areasList2;
 	}
+	// overide item state change listener
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		int i=1;
@@ -121,6 +127,7 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 		
 		
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 ////	ResultSet busesAvailable = databaseConnection.getResultSet();
