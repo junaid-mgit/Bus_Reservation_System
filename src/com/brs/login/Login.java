@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import com.brs.AdminMainPage.AdminMainPage;
 import com.brs.mainPage.HomePage;
 import com.brs.shared.auth_user;
 
@@ -67,7 +68,7 @@ public class Login implements ActionListener {
 			if (isLogin) {
 				if (db.IsAdmin()) {
 					f1.dispose();
-					new HomePage();
+					new AdminMainPage();
 				} else {
 					f1.dispose();
 					new HomePage();
