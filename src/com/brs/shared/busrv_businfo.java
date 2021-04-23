@@ -36,6 +36,23 @@ public busrv_businfo(int id,String bus_name,boolean is_active)
     this.is_active=is_active;
 
 }
+public busrv_businfo(String bus_name, String slug, String type, Time arriving_time, Time depature_time,
+			double fare, int no_of_seats, boolean is_active, LocalDateTime created_at, LocalDateTime updated_at,
+			int arriving_from_id, int depature_at_id) {
+		super();
+		this.bus_name = bus_name;
+		this.slug = slug;
+		this.type = type;
+		this.arriving_time = arriving_time;
+		this.depature_time = depature_time;
+		this.fare = fare;
+		this.no_of_seats = no_of_seats;
+		this.is_active = is_active;
+		this.created_at = created_at;
+		this.updated_at = updated_at;
+		this.arriving_from_id = arriving_from_id;
+		this.depature_at_id = depature_at_id;
+	}
 	/*
 	 * Constructor for bus information class for initialization
 	 * @param bus is
