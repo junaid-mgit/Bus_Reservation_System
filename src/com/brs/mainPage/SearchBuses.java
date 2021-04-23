@@ -33,8 +33,10 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 	JLabel fromArea,toArea,fromStop,toStop,travelDate;
 	JComboBox fromAreaList,toAreaList,fromStopList,toStopList;
 	JButton searchButton;
+	JTable availableBuses;
 	
 	String areasList[] ;
+	Object busesData[][];
 	Map<String,List<String>> fromAreaPairs,toAreaPairs;
 	List<String> stops;
 	
@@ -70,7 +72,7 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 		toStopList.addItemListener(this);
 		
 		// adding components in the panel
-		searchButton = new JButton("Search");
+		
 		searchPanel.add(fromArea);
 		searchPanel.add(fromAreaList);
 		searchPanel.add(toArea);
@@ -93,6 +95,7 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 		String[] areasList2 = new String[100];
 		try {
 			int i=0;
+			areasList2[0] = " ";
 			while(areasResultSet.next()) {
 				areasList2[i] = areasResultSet.getString("area_name");
 				i++;
@@ -126,27 +129,39 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-////	ResultSet busesAvailable = databaseConnection.getResultSet();
-////	String busTableColumns[] = new String[] {
-////			"Bus Id","Bus Name","Bus Fare"
-////	};
-////	
-////	Object[][] busData = new Object[databaseConnection.getResultSetSize()][3];
-////	int i = 0;
-////	try {
-////		
-////		while(busesAvailable.next()) {
-////			busData[i][0] = busesAvailable.getInt("id");
-////			busData[i][1] = busesAvailable.getString("bus_name");
-////			busData[i][2] = busesAvailable.getDouble("fare");
-////			i++;
-////		}
-////	} catch (SQLException e) {
-////		// TODO Auto-generated catch block
-////		e.printStackTrace();
-////	}
-////	JTable busTable = new JTable(busData,busTableColumns);
-////	availableBusesPanel.add(new JScrollPane(busTable));
+	if (e.getSource()==searchButton) {
+			System.out.println("Hello");
+			String busTableColumns[] = new String[] { "id", "bus_name", "type", "arriving_time", "departure_time",
+					"fare", "no_of_seats" };
+			String fromAreaName = (String) fromAreaList.getSelectedItem();
+			String toAreaName = (String) toAreaList.getSelectedItem();
+			System.out.println(fromAreaName + toAreaName);
+			ResultSet searchResults = db.searchBusesResultSet(fromAreaName, toAreaName);
+			try {
+				if (searchResults.next() == false) {
+					JOptionPane.showMessageDialog(this, "No Buses Available");
+				} else {
+					int i = 0;
+					busesData = new Object[db.getResultSetSize()][7];
+					while (searchResults.next()) {
+						busesData[i][0] = searchResults.getInt("id");
+						busesData[i][1] = searchResults.getString("bus_name");
+						busesData[i][2] = searchResults.getString("type");
+						busesData[i][3] = searchResults.getTime("arriving_time");
+						busesData[i][4] = searchResults.getTime("depature_time");
+						busesData[i][5] = searchResults.getDouble("fare");
+						busesData[i][6] = searchResults.getInt("no_of_seats");
+						i++;
+					}
+				}
+
+			} catch (SQLException e1) {
+
+				e1.printStackTrace();
+			}
+			System.out.println(busesData.length);
+			availableBuses = new JTable(busesData, busTableColumns);
+		}
 		
 	}
 	
