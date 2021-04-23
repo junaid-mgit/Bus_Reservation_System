@@ -1,4 +1,4 @@
-package com.busReservationMiniProject;
+package com.brs.mainPage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -83,7 +83,7 @@ public class SearchBuses extends JFrame implements ItemListener,ActionListener{
 		searchPanel.add(datePicker);
 		searchPanel.add(searchButton);
 		add(searchPanel);
-		setVisible(true);
+		
 		setSize(300,300);
 		setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 	}

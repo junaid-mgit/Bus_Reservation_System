@@ -12,7 +12,7 @@ import com.brs.shared.auth_user;
 
 public class Login implements ActionListener{
 
-	JFrame f1;
+	public JFrame f1;
 	JLabel l1,l2;
 	JTextField user_name;
 	JPasswordField password;
@@ -51,7 +51,6 @@ public class Login implements ActionListener{
 		
 		f1.add(p1);
 		f1.setSize(400,400);
-		f1.setVisible(true);
 		f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
@@ -85,7 +84,7 @@ public class Login implements ActionListener{
 	
 	
 	public static void main(String[] args) {
-		new Login();
+		new Login().f1.setVisible(true);
 	}
 }
 

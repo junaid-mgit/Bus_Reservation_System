@@ -1,4 +1,4 @@
-package com.busReservationMiniProject;
+package com.brs.mainPage;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

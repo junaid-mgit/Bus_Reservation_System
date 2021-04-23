@@ -1,4 +1,4 @@
-package com.busReservationMiniProject;
+package com.brs.mainPage;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -26,7 +26,7 @@ public class MainPage {
 
 	public static void main(String[] args) {
 		// call search base constructor
-		new SearchBuses();
+		new SearchBuses().setVisible(true);
 	}
 
 }
