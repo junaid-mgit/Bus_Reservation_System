@@ -24,6 +24,22 @@ public class busrv_businfo {
 	private int arriving_from_id;
 	private int depature_at_id;
 	
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+	public busrv_businfo() {
+		super();
+	}
+public busrv_businfo(int id,String bus_name,boolean is_active)
+{
+    super();
+    this.id=id;
+    this.bus_name=bus_name;
+    this.is_active=is_active;
+
+}
+=======
+>>>>>>> Stashed changes
 	/*
 	 * Constructor for bus information class for initialization
 	 * @param bus is
@@ -40,6 +56,10 @@ public class busrv_businfo {
 	 * @param arriving id
 	 * @param departure id
 	 */
+<<<<<<< Updated upstream
+=======
+>>>>>>> 815171951a3a1398388b5c5451b79d75f6b76381
+>>>>>>> Stashed changes
 	public busrv_businfo(int id, String bus_name, String slug, String type, Time arriving_time, Time depature_time,
 			double fare, int no_of_seats, boolean is_active, LocalDateTime created_at, LocalDateTime updated_at,
 			int arriving_from_id, int depature_at_id) {
