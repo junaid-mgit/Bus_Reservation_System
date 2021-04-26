@@ -32,8 +32,8 @@ public class HomePage {
 		f.setIconImage(icon);  
 
 		tabbedPane.addTab("Main Page", UIManager.getIcon("OptionPane.informationIcon"),panel1);
-		tabbedPane.addTab("Regsiter ", panel2);
-		tabbedPane.addTab("Buses", panel3);
+		//tabbedPane.addTab("Regsiter ", panel2);
+		//tabbedPane.addTab("Buses", panel3);
 
 		f.add(tabbedPane);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
