@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 import com.brs.AdminMainPage.AdminMainPage;
+import com.brs.Register.Register;
 import com.brs.mainPage.HomePage;
 import com.brs.shared.auth_user;
 
@@ -23,7 +24,7 @@ public class Login implements ActionListener{
 	JLabel l1, l2;
 	JTextField user_name;
 	JPasswordField password;
-	JButton b1;
+	JButton b1,b2;
 	JPanel p1;
 	DBConnect db;
 	Statement s;
@@ -53,18 +54,33 @@ public class Login implements ActionListener{
 		b1 = new JButton("Login");
 		b1.addActionListener(this); // an object of class where actionPerformed is defined
 
+		b2 = new JButton("Register");
+		b2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonActionPerformed(evt);
+            }
+        });
+
+		
 		p1.add(l1);
 		p1.add(user_name);
 		p1.add(l2);
 		p1.add(password);
 
 		p1.add(b1);
-
+		p1.add(b2);
+		
 		f1.add(p1);
 		f1.setSize(400, 400);
 		f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
+	private void ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+		f1.dispose();
+		new Register().setVisible(true);
+    }//
+	
 	
 /*
  * The actionPerformed method is used to validate login details
