@@ -3,6 +3,8 @@ package com.brs.AdminMainPage;
 import com.brs.AddBus.AddBus;
 import com.brs.DeleteBus.DeleteBus;
 import com.brs.Register.Register;
+import com.brs.mainPage.HomePage;
+import com.brs.mainPage.SearchBuses;
 import com.brs.shared.auth_user;
 
 import java.awt.Image;
@@ -41,16 +43,16 @@ public class AdminMainPage {
 		panel3 = new JPanel();
 		panel4 = new JPanel();
 
-		panel1.add(new AdminHomePage().getContentPane());
+		panel1.add(new SearchBuses().getContentPane());
 		panel2.add(new Register(true).getContentPane());
                 panel3.add(new AddBus().getContentPane());
-                panel4.add(new DeleteBus().getContentPane());
+                panel4.add(new DeleteBus().f1.getContentPane());
 		
 
 		tabbedPane.addTab("Home", panel1);
 		tabbedPane.addTab("Add Admin ", panel2);
 		tabbedPane.addTab("Add Bus", panel3);
-                tabbedPane.addTab("Delete Bus",panel4);
+        tabbedPane.addTab("Delete Bus",panel4);
 
 		f.add(tabbedPane);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

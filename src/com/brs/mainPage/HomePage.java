@@ -8,7 +8,7 @@ import com.brs.Register.Register;
 public class HomePage {
 
 	JTabbedPane tabbedPane;
-	JFrame f;
+	public JFrame f;
 	JPanel panel1, panel2, panel3, panel4, panel5;;
 
 	public HomePage() {
